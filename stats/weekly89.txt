@@ -1,0 +1,17 @@
+A+ 76.86
+A 62.05
+A- 59.74
+B+ 57.42
+B 42.62
+B- 40.3
+C+ 37.98
+C 35.68
+C- 33.36
+D+ 31.06
+D 28.74
+D- 26.42
+F 0
+Number of participants 3646
+Number of non zero scores 2023
+Maximum score 24
+Mean score 2.93 (12.19%)

@@ -1,0 +1,17 @@
+A+ 96.93
+A 93.87
+A- 77.63
+B+ 69.3
+B 66.23
+B- 49.99
+C+ 46.93
+C 43.86
+C- 40.78
+D+ 27.19
+D 24.12
+D- 21.04
+F 0
+Number of participants 3587
+Number of non zero scores 2644
+Maximum score 19
+Mean score 7.62 (40.09%)
