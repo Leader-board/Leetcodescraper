@@ -1,4 +1,3 @@
-import com.sun.source.tree.Tree;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -44,12 +43,12 @@ public class scraper extends Thread{
             // windows
            // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
             // linux
-            System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("../chromedriver"));
+            System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("chromedriver"));
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("headless");
+            options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
             //Initiating your chromedriver
-            WebDriver driver = new ChromeDriver();
+            WebDriver driver = new ChromeDriver(options);
             //maximize window
             //    driver.manage().window().maximize();
             //open browser with desired URL
@@ -189,9 +188,9 @@ public class scraper extends Thread{
         // windows
         // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         // linux
-        System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("../chromedriver"));
+        System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("chromedriver"));
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
         WebDriver driver= new ChromeDriver();
         if (isBi)
@@ -255,7 +254,7 @@ public class scraper extends Thread{
         //setting the driver executable
         for (contest_num = 33; contest_num <= 32; contest_num++)
             corerunner(true);
-        for (contest_num = 200; contest_num <= 201; contest_num++) {
+        for (contest_num = 2; contest_num <= 2; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
