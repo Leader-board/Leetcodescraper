@@ -2,12 +2,12 @@ import com.sun.source.tree.Tree;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,6 +15,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class scraper extends Thread{
+
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -40,7 +41,13 @@ public class scraper extends Thread{
         }
         @Override
         public void run() {
-            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+            // windows
+           // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+            // linux
+            System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("../chromedriver"));
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("headless");
+            options.addArguments("window-size=1920x1080");
             //Initiating your chromedriver
             WebDriver driver = new ChromeDriver();
             //maximize window
@@ -179,6 +186,13 @@ public class scraper extends Thread{
     public static void corerunner(Boolean isBi) throws InterruptedException, FileNotFoundException {
         File file;
         PrintStream stream;
+        // windows
+        // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+        // linux
+        System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("../chromedriver"));
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("window-size=1920x1080");
         WebDriver driver= new ChromeDriver();
         if (isBi)
             driver.get("https://leetcode.com/contest/" + "biweekly-contest-" + contest_num + "/ranking/" + 1 + "/");
@@ -241,7 +255,7 @@ public class scraper extends Thread{
         //setting the driver executable
         for (contest_num = 33; contest_num <= 32; contest_num++)
             corerunner(true);
-        for (contest_num = 68; contest_num <= 201; contest_num++) {
+        for (contest_num = 200; contest_num <= 201; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
