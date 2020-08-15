@@ -43,7 +43,7 @@ public class scraper extends Thread{
             // windows
            // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
             // linux
-            System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("chromedriver"));
+            System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("/chromedriver"));
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
@@ -188,11 +188,11 @@ public class scraper extends Thread{
         // windows
         // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         // linux
-        System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("chromedriver"));
+        System.setProperty("webdriver.chrome.driver", new File("").getAbsolutePath().concat("/chromedriver"));
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
-        WebDriver driver= new ChromeDriver();
+        WebDriver driver= new ChromeDriver(options);
         if (isBi)
             driver.get("https://leetcode.com/contest/" + "biweekly-contest-" + contest_num + "/ranking/" + 1 + "/");
         else if (contest_num >= 58)
