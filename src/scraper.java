@@ -217,7 +217,7 @@ public class scraper extends Thread{
             num_q = 6;
         resString = new TreeMap<>();
         driver.quit();
-        ExecutorService runner = Executors.newFixedThreadPool(4);
+        ExecutorService runner = Executors.newFixedThreadPool(6);
         Runnable threads[] = new Runnable[max_page];
         for (int i = 0; i < threads.length; i++)
         {
@@ -252,9 +252,10 @@ public class scraper extends Thread{
     }
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         //setting the driver executable
+        // controle which contests to run
         for (contest_num = 33; contest_num <= 32; contest_num++)
             corerunner(true);
-        for (contest_num = 2; contest_num <= 2; contest_num++) {
+        for (contest_num = 202; contest_num <= 202; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
