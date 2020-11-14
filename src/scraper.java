@@ -160,7 +160,7 @@ public class scraper extends Thread{
         }
 
         // print them off
-        file = new File("stats/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
+        file = new File((isBi?"biweekly":"weekly") + contest_num + "res.txt");
         stream = new PrintStream(file);
         System.setOut(stream);
         System.out.println("A+ " + gradecurves[0]);
@@ -231,7 +231,7 @@ public class scraper extends Thread{
         {
             // wait
         }
-        file = new File("results/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
+        file = new File((isBi?"biweekly":"weekly") + contest_num + "stats.txt");
         stream = new PrintStream(file);
         System.setOut(stream);
         System.out.println(str);
@@ -253,9 +253,9 @@ public class scraper extends Thread{
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         //setting the driver executable
         // controle which contests to run
-        for (contest_num = 33; contest_num <= 32; contest_num++)
+        for (contest_num = 33; contest_num <= 33; contest_num++)
             corerunner(true);
-        for (contest_num = 202; contest_num <= 202; contest_num++) {
+        for (contest_num = 203; contest_num <= 204; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
