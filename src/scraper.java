@@ -252,12 +252,13 @@ public class scraper extends Thread{
     }
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         //setting the driver executable
-        for (contest_num = 39; contest_num <= 39; contest_num++)
-            corerunner(true);
-        for (contest_num = 215; contest_num <= 214; contest_num++) {
+
+        for (contest_num = 215; contest_num <= 216; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
+        for (contest_num = 40; contest_num <= 40; contest_num++)
+            corerunner(true);
     }
 
 }
