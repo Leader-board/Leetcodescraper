@@ -251,13 +251,18 @@ public class scraper extends Thread{
         post_analysis(isBi);
     }
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
-        //setting the driver executable
-
-        for (contest_num = 215; contest_num <= 216; contest_num++) {
+        /*
+        If start > end, does not run. Set when done.
+         */
+        int weekly_start = 217;
+        int weekly_end = 217;
+        int biweekly_start = 41;
+        int biweekly_end = 40;
+        for (contest_num = weekly_start; contest_num <= weekly_end; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
         }
-        for (contest_num = 40; contest_num <= 40; contest_num++)
+        for (contest_num = biweekly_start; contest_num <= biweekly_end; contest_num++)
             corerunner(true);
     }
 
