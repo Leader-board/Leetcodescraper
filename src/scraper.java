@@ -254,10 +254,10 @@ public class scraper extends Thread{
         /*
         If start > end, does not run. Set when done.
          */
-        int weekly_start = 217;
-        int weekly_end = 217;
+        int weekly_start = 218;
+        int weekly_end = 220;
         int biweekly_start = 41;
-        int biweekly_end = 40;
+        int biweekly_end = 42;
         for (contest_num = weekly_start; contest_num <= weekly_end; contest_num++) {
             if (contest_num < 16 || contest_num > 18)
                 corerunner(false);
