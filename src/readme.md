@@ -1,1 +1,1 @@
-The code can be run by simply executing the script ``scripter.sh``. 
+The code can be run by simply executing the script ``scripter.sh`` (remember to set the ``chmod`` values so that the script is executable if needed), note however that the git lines should be removed.
