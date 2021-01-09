@@ -256,7 +256,7 @@ public class scraper extends Thread{
          */
         if (args.length != 4)
         {
-            System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end")
+            System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end. Set (start > end) to skip.")
         }
         else {
             int weekly_start = Integer.parseInt(args[0]);
