@@ -254,16 +254,22 @@ public class scraper extends Thread{
         /*
         If start > end, does not run. Set when done.
          */
-        int weekly_start = 221;
-        int weekly_end = 221;
-        int biweekly_start = 43;
-        int biweekly_end = 42;
-        for (contest_num = weekly_start; contest_num <= weekly_end; contest_num++) {
-            if (contest_num < 16 || contest_num > 18)
-                corerunner(false);
+        if (args.length != 4)
+        {
+            System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end")
         }
-        for (contest_num = biweekly_start; contest_num <= biweekly_end; contest_num++)
-            corerunner(true);
+        else {
+            int weekly_start = Integer.parseInt(args[0]);
+            int weekly_end = Integer.parseInt(args[1]);
+            int biweekly_start = Integer.parseInt(args[2]);
+            int biweekly_end = Integer.parseInt(args[3]);
+            for (contest_num = weekly_start; contest_num <= weekly_end; contest_num++) {
+                if (contest_num < 16 || contest_num > 18)
+                    corerunner(false);
+            }
+            for (contest_num = biweekly_start; contest_num <= biweekly_end; contest_num++)
+                corerunner(true);
+        }
     }
 
 }
