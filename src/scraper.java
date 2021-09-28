@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
     static String userdirectory = ""; // current working directory
-    static int num_threads = 6; // number of threads to run
+    static int num_threads = 10; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -254,7 +254,7 @@ public class scraper extends Thread{
         If start > end, does not run. Set when done.
          */
          // get current working directory
-        userdirectory = new File("").getAbsolutePath() + "/../";
+        userdirectory = new File("").getAbsolutePath() + "/..";
         System.out.println("Current working directory is " + userdirectory);
         if (args.length != 4)
         {
