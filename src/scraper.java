@@ -12,10 +12,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-static String userdirectory = ""; // current working directory
-static int num_threads = 9; // number of threads to run
 public class scraper extends Thread{
-
+    static String userdirectory = ""; // current working directory
+    static int num_threads = 9; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -256,6 +255,7 @@ public class scraper extends Thread{
          */
          // get current working directory
         userdirectory = new File("").getAbsolutePath();
+        System.out.println("Current working directory is " + userdirectory);
         if (args.length != 4)
         {
             System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end. Set (start > end) to skip.");
@@ -273,5 +273,4 @@ public class scraper extends Thread{
                 corerunner(true);
         }
     }
-
 }
