@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
     static String userdirectory = ""; // current working directory
-    static int num_threads = 9; // number of threads to run
+    static int num_threads = 6; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
