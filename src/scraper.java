@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
     static String userdirectory = "/homes/dm1321/Documents/Leetcodescraper"; // current working directory
-    static int num_threads = 8; // number of threads to run
+    static int num_threads = 6; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -44,7 +44,7 @@ public class scraper extends Thread{
             // linux
             System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
             ChromeOptions options = new ChromeOptions();
-            // options.addArguments("--headless");
+            options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
             //Initiating your chromedriver
             WebDriver driver = new ChromeDriver(options);
@@ -60,7 +60,7 @@ public class scraper extends Thread{
                 driver.get("https://leetcode.com/contest/leetcode-weekly-contest-" + contest_num + "/ranking/" + page_num + "/");
             while (driver.findElements(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div[2]/table/tbody")).size() == 0) {
                 try {
-                    sleep(500);
+                    sleep(650);
                     ptr++;
                     if (ptr % 10 == 9)
                     {
@@ -200,7 +200,7 @@ public class scraper extends Thread{
         // linux
         System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
-        // options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
         WebDriver driver= new ChromeDriver(options);
         if (isBi)
