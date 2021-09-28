@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
     static String userdirectory = "/homes/dm1321/Documents/Leetcodescraper"; // current working directory
-    static int num_threads = 6; // number of threads to run
+    static int num_threads = 8; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -51,6 +51,7 @@ public class scraper extends Thread{
             //maximize window
             //    driver.manage().window().maximize();
             //open browser with desired URL
+            int ptr = 0;
             if (isBiWeekly)
                 driver.get("https://leetcode.com/contest/biweekly-contest-" + contest_num + "/ranking/" + page_num + "/");
             else if (contest_num >= 58)
@@ -60,6 +61,16 @@ public class scraper extends Thread{
             while (driver.findElements(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div[2]/table/tbody")).size() == 0) {
                 try {
                     sleep(500);
+                    ptr++;
+                    if (ptr % 10 == 9)
+                    {
+                  if (isBiWeekly)
+                driver.get("https://leetcode.com/contest/biweekly-contest-" + contest_num + "/ranking/" + page_num + "/");
+            else if (contest_num >= 58)
+                driver.get("https://leetcode.com/contest/weekly-contest-" + contest_num + "/ranking/" + page_num + "/");
+            else
+                driver.get("https://leetcode.com/contest/leetcode-weekly-contest-" + contest_num + "/ranking/" + page_num + "/");
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
