@@ -189,7 +189,7 @@ public class scraper extends Thread{
         // linux
         System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
         WebDriver driver= new ChromeDriver(options);
         if (isBi)
