@@ -12,7 +12,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-
+static String userdirectory = ""; // current working directory
+static int num_threads = 9; // number of threads to run
 public class scraper extends Thread{
 
     static int contest_num = 1;
@@ -36,14 +37,13 @@ public class scraper extends Thread{
         {
             page_num = num;
             isBiWeekly = bi;
-
         }
         @Override
         public void run() {
             // windows
            // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
             // linux
-            System.setProperty("webdriver.chrome.driver", "/cs/home/dm282/Documents/Leetcodescraper/src/chromedriver");
+            System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
@@ -160,7 +160,7 @@ public class scraper extends Thread{
         }
 
         // print them off
-        file = new File("/cs/home/dm282/Documents/Leetcodescraper/stats/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
+        file = new File(userdirectory + "/stats/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
         stream = new PrintStream(file);
         System.setOut(stream);
         System.out.println("A+ " + gradecurves[0]);
@@ -188,7 +188,7 @@ public class scraper extends Thread{
         // windows
         // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         // linux
-        System.setProperty("webdriver.chrome.driver", "/cs/home/dm282/Documents/Leetcodescraper/src/chromedriver");
+        System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
@@ -217,7 +217,7 @@ public class scraper extends Thread{
             num_q = 6;
         resString = new TreeMap<>();
         driver.quit();
-        ExecutorService runner = Executors.newFixedThreadPool(6);
+        ExecutorService runner = Executors.newFixedThreadPool(num_threads);
         Runnable threads[] = new Runnable[max_page];
         for (int i = 0; i < threads.length; i++)
         {
@@ -231,7 +231,7 @@ public class scraper extends Thread{
         {
             // wait
         }
-        file = new File("/cs/home/dm282/Documents/Leetcodescraper/results/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
+        file = new File(userdirectory + "/results/"+(isBi?"biweekly":"weekly") + contest_num + ".txt");
         stream = new PrintStream(file);
         System.setOut(stream);
         System.out.println(str);
@@ -254,6 +254,8 @@ public class scraper extends Thread{
         /*
         If start > end, does not run. Set when done.
          */
+         // get current working directory
+        userdirectory = new File("").getAbsolutePath();
         if (args.length != 4)
         {
             System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end. Set (start > end) to skip.");
