@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
     static String userdirectory = "/homes/dm1321/Documents/Leetcodescraper"; // current working directory
-    static int num_threads = 10; // number of threads to run
+    static int num_threads = 6; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -44,7 +44,7 @@ public class scraper extends Thread{
             // linux
             System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
+            // options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
             //Initiating your chromedriver
             WebDriver driver = new ChromeDriver(options);
