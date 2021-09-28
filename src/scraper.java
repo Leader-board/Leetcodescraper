@@ -254,7 +254,7 @@ public class scraper extends Thread{
         If start > end, does not run. Set when done.
          */
          // get current working directory
-        userdirectory = new File("").getAbsolutePath();
+        userdirectory = new File("").getAbsolutePath() + "../";
         System.out.println("Current working directory is " + userdirectory);
         if (args.length != 4)
         {
