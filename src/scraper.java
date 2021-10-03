@@ -156,6 +156,8 @@ public class scraper extends Thread{
         // generate score curves
         double gradecurves[] = new double[12];
         int pointer = 1;
+        TreeMap<Integer, Integer> score_counts = new TreeMap<>((a, b) -> (b - a)); // giving number of people with certain score
+        // get the grade curve and count of unique scores
         for (Node N:resString.values())
         {
             if (index == pointer * num_nonzero/ 12)
@@ -166,6 +168,11 @@ public class scraper extends Thread{
                 if (pointer > 12)
                     break;
             }
+            // count of unique scores
+            if (score_counts.get(N.score) == null)
+                score_counts.put(N.score, 1);
+            else
+                score_counts.put(N.score, score_counts.get(N.score) + 1);
             index++;
         }
 
@@ -190,6 +197,12 @@ public class scraper extends Thread{
         System.out.println("Number of non zero scores " + num_nonzero);
         System.out.println("Maximum score " + maxscore);
         System.out.println("Mean score " + round(mean) + " (" + round(mean * 100d/(double)maxscore) + "%)");
+        System.out.println("");
+        System.out.println("Count of all possible scores (score frequency):");
+        for (int sc: score_counts.keySet())
+        {
+            System.out.println(sc + " " + score_counts.get(sc) + " (" + (100d*(double)score_counts.get(sc)/(double)participant_num) + ")");
+        }
         stream.close();
     }
     public static void corerunner(Boolean isBi) throws InterruptedException, FileNotFoundException {
