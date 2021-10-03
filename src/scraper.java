@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 public class scraper extends Thread{
-    static String userdirectory = "/homes/dm1321/Documents/Leetcodescraper"; // current working directory
-    static int num_threads = 9; // number of threads to run
+    static String userdirectory = ""; // current working directory
+    static int num_threads = 12; // number of threads to run
     static int contest_num = 1;
     // static Node resString[];
     static TreeMap<Integer, Node> resString;
@@ -265,17 +265,18 @@ public class scraper extends Thread{
         If start > end, does not run. Set when done.
          */
          // get current working directory
-        //.userdirectory = new File("").getAbsolutePath() + "/..";
+        userdirectory = new File("").getAbsolutePath() + "/..";
         System.out.println("Current working directory is " + userdirectory);
-        if (args.length != 4)
+        if (args.length != 5)
         {
-            System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end. Set (start > end) to skip.");
+            System.out.println("Enter CMD argments: weekly_start, weekly_end, biweekly_start, biweekly_end, number_of_threads. Set (start > end) to skip.");
         }
         else {
             int weekly_start = Integer.parseInt(args[0]);
             int weekly_end = Integer.parseInt(args[1]);
             int biweekly_start = Integer.parseInt(args[2]);
             int biweekly_end = Integer.parseInt(args[3]);
+            num_threads = Integer.parseInt(args[4]);
             for (contest_num = weekly_start; contest_num <= weekly_end; contest_num++) {
                 if (contest_num < 16 || contest_num > 18)
                     corerunner(false);
