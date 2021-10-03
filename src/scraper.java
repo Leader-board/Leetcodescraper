@@ -201,9 +201,9 @@ public class scraper extends Thread{
         System.out.println("Count of all possible scores (score frequency):");
         for (int sc: score_counts.keySet())
         {
-            System.out.println(sc + " " + score_counts.get(sc) + " (" + round(100d*(double)score_counts.get(sc)/(double)participant_num) + ")");
+            System.out.println(sc + " " + score_counts.get(sc) + " (" + round(100d*(double)score_counts.get(sc)/(double)participant_num) + "%)");
         }
-        System.out.println(0 + " " + (participant_num - num_nonzero) + " (" + round(100d*(double)(participant_num - num_nonzero)/(double)participant_num) + ")");
+        System.out.println(0 + " " + (participant_num - num_nonzero) + " (" + round(100d*(double)(participant_num - num_nonzero)/(double)participant_num) + "%)");
         stream.close();
     }
     public static void corerunner(Boolean isBi) throws InterruptedException, FileNotFoundException {
