@@ -15,3 +15,12 @@ Number of participants 1262
 Number of non zero scores 873
 Maximum score 19
 Mean score 7.39 (38.87%)
+
+Count of all possible scores (score frequency):
+19 116 (9.19%)
+12 451 (35.74%)
+8 5 (0.4%)
+7 190 (15.06%)
+4 1 (0.08%)
+3 109 (8.64%)
+0 389 (30.82%)
