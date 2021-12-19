@@ -1,0 +1,29 @@
+A+ 80.51
+A 77.68
+A- 63.74
+B+ 60.92
+B 55.31
+B- 41.37
+C+ 38.55
+C 35.72
+C- 32.89
+D+ 30.06
+D 27.23
+D- 24.41
+F 0
+Number of participants 9018
+Number of non zero scores 6119
+Maximum score 18
+Mean score 4.11 (22.85%)
+
+Count of all possible scores (score frequency):
+18 102 (1.13%)
+14 6 (0.07%)
+12 1069 (11.85%)
+9 1 (0.01%)
+8 1256 (13.93%)
+7 300 (3.33%)
+5 11 (0.12%)
+4 3 (0.03%)
+3 3370 (37.37%)
+0 2899 (32.15%)
