@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class combinedanalysis {
@@ -14,6 +15,7 @@ public class combinedanalysis {
         double total_score = 0;
         double best_score = 0;
         double worst_score = 100;
+        ArrayList<Double> scores = new ArrayList<>();
     }
     static HashMap<String, Node> hm = new HashMap<>();
     public static String[] runner(String location) {
@@ -54,6 +56,7 @@ public class combinedanalysis {
             N.best_rank = Math.min(N.best_rank, i);
             N.best_score = Math.max(N.best_score, lcmark);
             N.worst_score = Math.min(N.worst_score, lcmark);
+            N.scores.add(lcmark);
             hm.put(split[1], N);
         }
     }
@@ -63,11 +66,13 @@ public class combinedanalysis {
     }
     public static void generatetable()
     {
-        System.out.println("User|Mean score|Best rank|Number of participants|Best score|Worst score");
+        System.out.println("User|Mean score|Best rank|Best score|Worst score|Median score|Number of participants");
         for (String s: hm.keySet())
         {
             Node N = hm.get(s);
-            System.out.println(s + "|" + N.total_score/(double)N.participation_count + "|" + N.best_rank + "|" + N.participation_count + "|" + N.best_score + "|" + N.worst_score);
+            Collections.sort(N.scores);
+            double median_score = (N.scores.size() % 2 == 1 ? N.scores.get(N.participation_count / 2) : 0.5*N.scores.get(N.participation_count/2 - 1) + 0.5*N.scores.get(N.participation_count/2));
+            System.out.println(s + "|" + N.total_score/(double)N.participation_count + "|" + N.best_rank + "|" + N.best_score + "|" + N.worst_score + "|" + median_score + "|" + N.participation_count);
         }
     }
     public static void main(String[] args)
