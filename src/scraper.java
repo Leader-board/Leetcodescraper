@@ -39,10 +39,11 @@ public class scraper extends Thread{
         }
         @Override
         public void run() {
-            // windows
-            // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-            // linux
-            System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
+            // windows - dev or not?
+            if (System.getProperty("os.name").contains("Windows"))
+                System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+            else
+                System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
@@ -211,10 +212,11 @@ public class scraper extends Thread{
     public static void corerunner(Boolean isBi) throws InterruptedException, FileNotFoundException {
         File file;
         PrintStream stream;
-        // windows
-        //System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        // linux
-        System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
+        // windows - dev or not?
+        if (System.getProperty("os.name").contains("Windows"))
+            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+        else
+            System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
