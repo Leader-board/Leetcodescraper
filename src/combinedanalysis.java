@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,7 +78,8 @@ public class combinedanalysis {
     }
     public static void main(String[] args)
     {
-        String loc = "/homes/dm1321/Documents/Leetcodescraper/results";
+        String loc = Path.of("").toAbsolutePath() + "/../results";
+        System.out.println(loc);
         String[] names;
         File f = new File(loc);
         names = f.list();

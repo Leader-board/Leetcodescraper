@@ -40,12 +40,14 @@ public class scraper extends Thread{
         @Override
         public void run() {
             // windows
-           // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+            // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
             // linux
             System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
             options.addArguments("window-size=1920x1080");
+            String user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36";
+            options.addArguments("user-agent={" + user_agent + "}");
             //Initiating your chromedriver
             WebDriver driver = new ChromeDriver(options);
             //maximize window
@@ -210,12 +212,14 @@ public class scraper extends Thread{
         File file;
         PrintStream stream;
         // windows
-        // System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         // linux
         System.setProperty("webdriver.chrome.driver", userdirectory + "/src/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("window-size=1920x1080");
+        String user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36";
+        options.addArguments("user-agent={" + user_agent + "}");
         WebDriver driver= new ChromeDriver(options);
         if (isBi)
             driver.get("https://leetcode.com/contest/" + "biweekly-contest-" + contest_num + "/ranking/" + 1 + "/");
@@ -242,7 +246,7 @@ public class scraper extends Thread{
         resString = new TreeMap<>();
         driver.quit();
         ExecutorService runner = Executors.newFixedThreadPool(num_threads);
-        Runnable threads[] = new Runnable[max_page];
+        Runnable[] threads = new Runnable[max_page];
         for (int i = 0; i < threads.length; i++)
         {
             threads[i] = new progcore((i + 1), isBi);
