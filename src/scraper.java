@@ -223,14 +223,21 @@ public class scraper extends Thread{
         String user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36";
         options.addArguments("user-agent={" + user_agent + "}");
         WebDriver driver= new ChromeDriver(options);
-        if (isBi)
-            driver.get("https://leetcode.com/contest/" + "biweekly-contest-" + contest_num + "/ranking/" + 1 + "/");
-        else if (contest_num >= 58)
-            driver.get("https://leetcode.com/contest/" + "weekly-contest-" + contest_num + "/ranking/" + 1 + "/");
-        else
-            driver.get("https://leetcode.com/contest/" + "leetcode-weekly-contest-" + contest_num + "/ranking/" + 1 + "/");
-        while (driver.findElements(By.xpath("/html/body/div[2]/div/div/div/div/nav/ul/li[6]/a")).size() == 0)
+        int ptr = 0;
+        while (driver.findElements(By.xpath("/html/body/div[2]/div/div/div/div/nav/ul/li[6]/a")).size() == 0) {
+            // reload if stuck
             sleep(500);
+            ptr++;
+            if (ptr % 30 == 0)
+            {
+                if (isBi)
+                    driver.get("https://leetcode.com/contest/" + "biweekly-contest-" + contest_num + "/ranking/" + 1 + "/");
+                else if (contest_num >= 58)
+                    driver.get("https://leetcode.com/contest/" + "weekly-contest-" + contest_num + "/ranking/" + 1 + "/");
+                else
+                    driver.get("https://leetcode.com/contest/" + "leetcode-weekly-contest-" + contest_num + "/ranking/" + 1 + "/");
+            }
+        }
         int max_page = Integer.parseInt(driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/nav/ul/li[6]/a")).getText());
         // find the number of questions
         String str = driver.findElement(By.xpath("/html/body/div[2]/div/div/div/div/div[2]/div[2]/table/thead/tr")).getText();
